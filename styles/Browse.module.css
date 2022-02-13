@@ -1,0 +1,55 @@
+.browse {
+  position: relative;
+  bottom: 250px;
+  z-index: 20;
+}
+
+@media (max-width: 1399.98px) {
+  .browse {
+    bottom: 100px;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .browse {
+    bottom: 70px !important ;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .browse {
+    bottom: -70px !important ;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .browse {
+    bottom: 120px !important ;
+  }
+}
+
+@media (max-width: 575.98px) {
+  /* .browse {
+    bottom: 0px;
+  } */
+}
+
+/* @media (min-width: 1200px) {
+
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+}
+
+@media (max-width: 575.98px) {
+
+} */

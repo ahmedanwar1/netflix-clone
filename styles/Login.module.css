@@ -1,0 +1,137 @@
+.backgroundCover {
+  background-image: url("https://assets.nflxext.com/ffe/siteui/vlv3/eb482c64-e879-4e88-9ddc-d839cb7d1232/a15b3b43-5700-471f-97bc-6657d32e28f5/EG-en-20220131-popsignuptwoweeks-perspective_alpha_website_large.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1;
+}
+
+.backgroundCover::after {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 180px 50px #000 inset;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.logo {
+  width: 150px;
+}
+
+.wrapper {
+  position: relative;
+  z-index: 3;
+}
+
+.wrapper button {
+  background-color: #e50914 !important;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 0;
+}
+
+.header svg {
+  color: #fff !important;
+}
+
+.storyCard {
+  width: 100%;
+  text-align: center;
+  padding: 130px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.storyCard .title {
+  font-size: 45px;
+}
+
+.storyCard .subtitle {
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.storyCard .disclaimer {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.title,
+.subtitle,
+.disclaimer {
+  text-shadow: 0px 0px 15px #000;
+}
+
+.storyCard .form {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.storyCard input {
+  flex: 0.5;
+  padding: 15px;
+  outline: 0;
+  font-size: 20px;
+}
+
+.storyCard button {
+  border-radius: 0;
+  padding: 0 20px;
+}
+
+@media (max-width: 405px) {
+  .header {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .logo {
+    width: 120px;
+  }
+
+  .storyCard .form {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .storyCard button {
+    height: 50px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .storyCard input {
+    flex: 0.7;
+  }
+}
+
+@media (max-width: 991.98px) {
+  /* .storyCard input {
+    flex: 1;
+  } */
+}
+
+@media (max-width: 1199.98px) {
+}
+
+@media (max-width: 1399.98px) {
+  /* .storyCard input {
+    flex: 0.7;
+  } */
+}
