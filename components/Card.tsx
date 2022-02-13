@@ -7,12 +7,29 @@ import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
-const Card: React.FC = () => {
+interface Props {
+  longCard?: Boolean;
+  title: String;
+  imgSrc: String;
+  generes: Number[];
+  voteAverage: Number;
+}
+
+const Card: React.FC<Props> = ({
+  longCard = false,
+  title,
+  imgSrc,
+  generes,
+  voteAverage,
+}) => {
   return (
-    <div className={styles.card}>
-      <div className={styles.thumbnail}>
-        <img src="https://image.tmdb.org/t/p/original/3G1Q5xF40HkUBJXxt2DQgQzKTp5.jpg" />
-      </div>
+    <div className={longCard ? styles.longCard : styles.card}>
+      {!longCard && (
+        <div className={styles.thumbnail}>
+          <img src={"https://image.tmdb.org/t/p/w500/" + imgSrc} />
+        </div>
+      )}
+      {longCard && <img src={"https://image.tmdb.org/t/p/original" + imgSrc} />}
       <div className={styles.details}>
         <div className={styles.actionRow}>
           <div className={styles.left}>
@@ -22,12 +39,16 @@ const Card: React.FC = () => {
             <div className={styles.actionBtn}>
               <AddIcon />
             </div>
-            <div className={styles.actionBtn}>
-              <ThumbUpOutlinedIcon />
-            </div>
-            <div className={styles.actionBtn}>
-              <ThumbDownOutlinedIcon />
-            </div>
+            {!longCard && (
+              <>
+                <div className={styles.actionBtn}>
+                  <ThumbUpOutlinedIcon />
+                </div>
+                <div className={styles.actionBtn}>
+                  <ThumbDownOutlinedIcon />
+                </div>
+              </>
+            )}
           </div>
           <div className={styles.right}>
             <div className={styles.actionBtn}>
@@ -35,13 +56,13 @@ const Card: React.FC = () => {
             </div>
           </div>
         </div>
-        <p className={styles.title}>The Ice Age Adventures Of Buck Wild</p>
-        <p className={styles.matching}>74% Match</p>
+        <p className={styles.title}>{title}</p>
+        <p className={styles.rating}>{voteAverage} of 10 ⭐</p>
         <div className={styles.genre}>
           <ul>
-            <li>Adventure</li>
-            <li>Animation</li>
-            <li>Comedy</li>
+            {generes?.map((genere: any) => (
+              <li key={genere}>{genere}</li>
+            ))}
           </ul>
         </div>
       </div>

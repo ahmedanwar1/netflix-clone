@@ -27,7 +27,6 @@ const Banner: React.FC<Props> = ({ trendingMovies }) => {
       {spotLightMovie && (
         <div className={styles.banner}>
           <img
-            // src="https://image.tmdb.org/t/p/original/iQFcwSGbZXMkeyKrxbPnwnRo5fl.jpg"
             src={`https://image.tmdb.org/t/p/original/${spotLightMovie["backdrop_path"]}`}
             alt=""
           />
