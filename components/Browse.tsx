@@ -9,10 +9,12 @@ const Browse: React.FC = () => {
   useEffect(() => {
     axios
       .get(
-        "https://api.themoviedb.org/3/genre/movie/list?api_key=429f8c8585f3588d3a8a235df2f63819&language=en-US"
+        // `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.TMDB_API_KEY}&language=en-US`
+        `/api/movies/genres`
       )
       .then((result) => {
         setGeneresList(result.data.genres);
+        // console.log(result);
       });
   }, []);
 

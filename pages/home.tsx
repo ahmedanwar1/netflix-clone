@@ -26,7 +26,8 @@ export default home;
 
 export const getStaticProps = async () => {
   const trendingMovies = await axios.get(
-    "https://api.themoviedb.org/3/trending/all/week?api_key=429f8c8585f3588d3a8a235df2f63819"
+    // `https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.TMDB_API_KEY}`
+    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}&with_genres=16`
   );
 
   return {
