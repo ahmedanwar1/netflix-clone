@@ -18,9 +18,17 @@ interface Props {
 const Banner: React.FC<Props> = ({ trendingMovies }) => {
   const [spotLightMovie, setSpotLightMovie] = useState<any>();
 
-  useEffect(() => {
+  const SpotLightMovieSetter = () => {
     const ranNum = Math.floor(Math.random() * trendingMovies.results.length);
     setSpotLightMovie(trendingMovies.results[ranNum]);
+  };
+
+  useEffect(() => {
+    SpotLightMovieSetter();
+
+    setInterval(() => {
+      SpotLightMovieSetter();
+    }, 60000);
   }, [trendingMovies]);
   return (
     <>

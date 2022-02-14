@@ -1,6 +1,7 @@
 .browse {
   position: relative;
   bottom: 250px;
+  margin-bottom: -250px;
   z-index: 20;
 }
 

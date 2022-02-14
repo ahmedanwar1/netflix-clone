@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import styles from "../styles/Browse.module.css";
-import Card from "./Card";
 import CategoryList from "./CategoryList";
 
 const Browse: React.FC = () => {

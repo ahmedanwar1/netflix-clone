@@ -57,7 +57,7 @@ const Card: React.FC<Props> = ({
           </div>
         </div>
         <p className={styles.title}>{title}</p>
-        <p className={styles.rating}>{voteAverage} of 10 ⭐</p>
+        <p className={styles.rating}>Rating: {voteAverage} of 10</p>
         <div className={styles.genre}>
           <ul>
             {generes?.map((genere: any) => (

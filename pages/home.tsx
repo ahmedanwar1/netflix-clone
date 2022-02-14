@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Banner from "../components/Banner";
 import Browse from "../components/Browse";
 import axios from "axios";
+import Footer from "../components/Footer";
 
 interface Props {
   trendingMovies: any;
@@ -16,6 +17,7 @@ const home: NextPage<Props> = ({ trendingMovies }) => {
       <Header />
       <Banner trendingMovies={trendingMovies} />
       <Browse />
+      <Footer />
     </>
   );
 };
