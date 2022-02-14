@@ -1,1 +1,1 @@
-https://netflix-2dsv570e7-ahmedanwar1.vercel.app/home
+https://netflix-ahmedanwar1.vercel.app/home
