@@ -20,7 +20,9 @@ const CategoryList: React.FC<Props> = ({ genere }) => {
           `/api/movies/discover?genre_id=${genere.id}`
         )
         .then((result) => {
-          setMoviesList(result.data.results);
+          console.log(result.data);
+          // setMoviesList(result.data.results);
+          setMoviesList(result.data);
         });
     }
   }, []);
@@ -34,10 +36,12 @@ const CategoryList: React.FC<Props> = ({ genere }) => {
             {moviesList.map((movie: any) => (
               <Card
                 key={movie.id}
-                longCard={genere.id === 10770}
+                longCard={genere.id === 10770 || genere.id === 99}
                 title={movie.title}
                 imgSrc={
-                  genere.id === 10770 ? movie.poster_path : movie.backdrop_path
+                  genere.id === 10770 || genere.id === 99
+                    ? movie.poster_path
+                    : movie.backdrop_path
                 }
                 generes={movie.genre_ids}
                 voteAverage={movie.vote_average}
