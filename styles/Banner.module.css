@@ -38,7 +38,9 @@
 
 .banner .details .title,
 .banner .details .synopsis {
-  text-shadow: 0px 0px 15px #000;
+  /* text-shadow: 0px 0px 15px #000;
+   */
+  text-shadow: 0px 0px 5px rgb(0 0 0 / 74%);
 }
 
 .banner .details .buttonRow {

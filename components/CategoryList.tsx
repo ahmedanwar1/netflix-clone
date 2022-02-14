@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import styles from "../styles/CategoryList.module.css";
 import Card from "./Card";
+import ScrollContainer from "react-indiana-drag-scroll";
 
 interface Props {
   // title: String;
@@ -29,7 +30,7 @@ const CategoryList: React.FC<Props> = ({ genere }) => {
       {moviesList && (
         <div className={styles.categoryList}>
           <h2 className={styles.title}>{genere.name}</h2>
-          <div className={styles.cardContainer}>
+          <ScrollContainer className={styles.cardContainer}>
             {moviesList.map((movie: any) => (
               <Card
                 key={movie.id}
@@ -42,7 +43,7 @@ const CategoryList: React.FC<Props> = ({ genere }) => {
                 voteAverage={movie.vote_average}
               />
             ))}
-          </div>
+          </ScrollContainer>
         </div>
       )}
     </>
