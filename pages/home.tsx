@@ -24,7 +24,7 @@ const home: NextPage<Props> = ({ trendingMovies }) => {
 
 export default home;
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const trendingMovies = await axios.get(
     // `https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.TMDB_API_KEY}`
     `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}&with_genres=16`
