@@ -4,7 +4,7 @@ import styles from "../styles/Browse.module.css";
 import CategoryList from "./CategoryList";
 
 const Browse: React.FC = () => {
-  const [generesList, setGeneresList] = useState<any>();
+  const [genresList, setGenresList] = useState<any>();
 
   useEffect(() => {
     axios
@@ -13,16 +13,16 @@ const Browse: React.FC = () => {
         `/api/movies/genres`
       )
       .then((result) => {
-        setGeneresList(result.data.genres);
+        setGenresList(result.data.genres);
         // console.log(result);
       });
   }, []);
 
   return (
     <div className={styles.browse}>
-      {generesList &&
-        generesList.map((genere: any) => {
-          return <CategoryList genere={genere} key={genere.id} />;
+      {genresList &&
+        genresList.map((genre: any) => {
+          return <CategoryList genre={genre} key={genre.id} />;
         })}
     </div>
   );

@@ -9,27 +9,39 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 interface Props {
   longCard?: Boolean;
+  id: Number;
   title: String;
   imgSrc: String;
   generes: Number[];
   voteAverage: Number;
+  SelectMovieHandler: (movieID: Number) => void;
 }
 
 const Card: React.FC<Props> = ({
   longCard = false,
+  id,
   title,
   imgSrc,
   generes,
   voteAverage,
+  SelectMovieHandler,
 }) => {
   return (
     <div className={longCard ? styles.longCard : styles.card}>
       {!longCard && (
         <div className={styles.thumbnail}>
-          <img src={"https://image.tmdb.org/t/p/w500/" + imgSrc} />
+          <img
+            src={"https://image.tmdb.org/t/p/w500/" + imgSrc}
+            onClick={() => SelectMovieHandler(id)}
+          />
         </div>
       )}
-      {longCard && <img src={"https://image.tmdb.org/t/p/original" + imgSrc} />}
+      {longCard && (
+        <img
+          src={"https://image.tmdb.org/t/p/original" + imgSrc}
+          onClick={() => SelectMovieHandler(id)}
+        />
+      )}
       <div className={styles.details}>
         <div className={styles.actionRow}>
           <div className={styles.left}>
@@ -52,7 +64,7 @@ const Card: React.FC<Props> = ({
           </div>
           <div className={styles.right}>
             <div className={styles.actionBtn}>
-              <KeyboardArrowDownIcon />
+              <KeyboardArrowDownIcon onClick={() => SelectMovieHandler(id)} />
             </div>
           </div>
         </div>

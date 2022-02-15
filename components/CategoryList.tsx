@@ -3,24 +3,30 @@ import React, { useEffect, useState } from "react";
 import styles from "../styles/CategoryList.module.css";
 import Card from "./Card";
 import ScrollContainer from "react-indiana-drag-scroll";
+import ItemDetailsSection from "./ItemDetailsSection";
 
 interface Props {
   // title: String;
-  genere: any;
+  genre: any;
 }
 
-const CategoryList: React.FC<Props> = ({ genere }) => {
+const CategoryList: React.FC<Props> = ({ genre }) => {
   const [moviesList, setMoviesList] = useState<any>();
+  const [selectedMovie, setSelectedMovie] = useState<Number>();
+
+  const SelectMovieHandler = (movieID: Number) => {
+    console.log(movieID);
+    setSelectedMovie(movieID);
+  };
 
   useEffect(() => {
-    if (genere) {
+    if (genre) {
       axios
         .get(
           // `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}&with_genres=${genere.id}`
-          `/api/movies/discover?genre_id=${genere.id}`
+          `/api/movies/discover?genre_id=${genre.id}`
         )
         .then((result) => {
-          console.log(result.data);
           // setMoviesList(result.data.results);
           setMoviesList(result.data);
         });
@@ -31,23 +37,26 @@ const CategoryList: React.FC<Props> = ({ genere }) => {
     <>
       {moviesList && (
         <div className={styles.categoryList}>
-          <h2 className={styles.title}>{genere.name}</h2>
+          <h2 className={styles.title}>{genre.name}</h2>
           <ScrollContainer className={styles.cardContainer}>
             {moviesList.map((movie: any) => (
               <Card
                 key={movie.id}
-                longCard={genere.id === 10770 || genere.id === 99}
+                id={movie.id}
+                longCard={genre.id === 10770 || genre.id === 99}
                 title={movie.title}
                 imgSrc={
-                  genere.id === 10770 || genere.id === 99
+                  genre.id === 10770 || genre.id === 99
                     ? movie.poster_path
                     : movie.backdrop_path
                 }
                 generes={movie.genre_ids}
                 voteAverage={movie.vote_average}
+                SelectMovieHandler={SelectMovieHandler}
               />
             ))}
           </ScrollContainer>
+          <ItemDetailsSection itemID={selectedMovie} />
         </div>
       )}
     </>

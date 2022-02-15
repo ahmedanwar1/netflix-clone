@@ -10,6 +10,7 @@ export default async function handler(
       `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}&with_genres=${req.query.genre_id}`
     );
 
+    //remove porn contents
     const newMoviesList = moviesList.data.results.filter((movie: any) => {
       if (movie.overview.search("porn") === -1) {
         return movie;
