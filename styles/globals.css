@@ -42,3 +42,19 @@ ul {
   border-color: #fff !important;
   margin-right: 20px;
 }
+
+.actionBtn {
+  background-color: rgba(23, 23, 23, 0.3);
+  border: 2px solid #fff;
+  padding: 4px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.actionBtn svg {
+  font-size: 20px;
+}

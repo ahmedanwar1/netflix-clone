@@ -1,20 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../styles/Card.module.css";
+import { motion } from "framer-motion";
 
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import AddIcon from "@mui/icons-material/Add";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import Image from "next/image";
+
+import Modal from "./Modal";
 
 interface Props {
   longCard?: Boolean;
   id: Number;
   title: String;
   imgSrc: String;
-  generes: Number[];
+  genres: Number[];
   voteAverage: Number;
-  SelectMovieHandler: (movieID: Number) => void;
 }
 
 const Card: React.FC<Props> = ({
@@ -22,63 +25,71 @@ const Card: React.FC<Props> = ({
   id,
   title,
   imgSrc,
-  generes,
+  genres,
   voteAverage,
-  SelectMovieHandler,
 }) => {
+  const [toggleModal, setToggleModal] = useState<Boolean>(false);
+
   return (
-    <div className={longCard ? styles.longCard : styles.card}>
-      {!longCard && (
-        <div className={styles.thumbnail}>
-          <img
-            src={"https://image.tmdb.org/t/p/w500/" + imgSrc}
-            onClick={() => SelectMovieHandler(id)}
+    <>
+      <div className={longCard ? styles.longCard : styles.card}>
+        {!longCard && (
+          <div className={styles.thumbnail}>
+            <Image
+              src={"https://image.tmdb.org/t/p/w500/" + imgSrc}
+              onClick={() => setToggleModal(true)}
+              layout="fill"
+            />
+          </div>
+        )}
+        {longCard && (
+          <Image
+            src={"https://image.tmdb.org/t/p/original" + imgSrc}
+            onClick={() => setToggleModal(true)}
+            layout="fill"
           />
-        </div>
-      )}
-      {longCard && (
-        <img
-          src={"https://image.tmdb.org/t/p/original" + imgSrc}
-          onClick={() => SelectMovieHandler(id)}
-        />
-      )}
-      <div className={styles.details}>
-        <div className={styles.actionRow}>
-          <div className={styles.left}>
-            <div className={`${styles.actionBtn} ${styles.playBtn}`}>
-              <PlayArrowIcon />
+        )}
+        <div className={styles.details}>
+          <div className={styles.actionRow}>
+            <div className={styles.left}>
+              <div className={`actionBtn ${styles.playBtn}`}>
+                <PlayArrowIcon />
+              </div>
+              <div className="actionBtn">
+                <AddIcon />
+              </div>
+              {!longCard && (
+                <>
+                  <div className="actionBtn">
+                    <ThumbUpOutlinedIcon />
+                  </div>
+                  <div className="actionBtn">
+                    <ThumbDownOutlinedIcon />
+                  </div>
+                </>
+              )}
             </div>
-            <div className={styles.actionBtn}>
-              <AddIcon />
-            </div>
-            {!longCard && (
-              <>
-                <div className={styles.actionBtn}>
-                  <ThumbUpOutlinedIcon />
-                </div>
-                <div className={styles.actionBtn}>
-                  <ThumbDownOutlinedIcon />
-                </div>
-              </>
-            )}
-          </div>
-          <div className={styles.right}>
-            <div className={styles.actionBtn}>
-              <KeyboardArrowDownIcon onClick={() => SelectMovieHandler(id)} />
+            <div className={styles.right}>
+              <div className="actionBtn">
+                <KeyboardArrowDownIcon onClick={() => setToggleModal(true)} />
+              </div>
             </div>
           </div>
-        </div>
-        <p className={styles.title}>{title}</p>
-        <p className={styles.rating}>Rating: {voteAverage} of 10</p>
-        <div className={styles.genre}>
-          <ul>
-            {generes?.map((genere: any) => (
-              <li key={genere}>{genere}</li>
-            ))}
-          </ul>
+          <p className={styles.title}>{title}</p>
+          <p className={styles.rating}>Rating: {voteAverage} of 10</p>
+          <div className={styles.genre}>
+            <ul>
+              {genres?.map((genere: any) => (
+                <li key={genere}>{genere}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+      {toggleModal && (
+        <Modal toggleModalHandler={setToggleModal} movieID={id} />
+      )}
+    </>
   );
 };
 

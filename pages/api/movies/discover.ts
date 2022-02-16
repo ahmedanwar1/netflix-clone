@@ -7,7 +7,9 @@ export default async function handler(
 ) {
   if (req.method === "GET") {
     const moviesList = await axios.get(
-      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}&with_genres=${req.query.genre_id}`
+      `https://api.themoviedb.org/3/discover/movie?api_key=${
+        process.env.TMDB_API_KEY
+      }&with_genres=${encodeURIComponent(req.query.genre_id.toString())}`
     );
 
     //remove porn contents

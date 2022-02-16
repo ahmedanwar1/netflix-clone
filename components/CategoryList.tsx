@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import styles from "../styles/CategoryList.module.css";
 import Card from "./Card";
 import ScrollContainer from "react-indiana-drag-scroll";
-import ItemDetailsSection from "./ItemDetailsSection";
 
 interface Props {
   // title: String;
@@ -12,12 +11,6 @@ interface Props {
 
 const CategoryList: React.FC<Props> = ({ genre }) => {
   const [moviesList, setMoviesList] = useState<any>();
-  const [selectedMovie, setSelectedMovie] = useState<Number>();
-
-  const SelectMovieHandler = (movieID: Number) => {
-    console.log(movieID);
-    setSelectedMovie(movieID);
-  };
 
   useEffect(() => {
     if (genre) {
@@ -50,13 +43,12 @@ const CategoryList: React.FC<Props> = ({ genre }) => {
                     ? movie.poster_path
                     : movie.backdrop_path
                 }
-                generes={movie.genre_ids}
+                genres={movie.genre_ids}
                 voteAverage={movie.vote_average}
-                SelectMovieHandler={SelectMovieHandler}
               />
             ))}
           </ScrollContainer>
-          <ItemDetailsSection itemID={selectedMovie} />
+          {/* <ItemDetailsSection itemID={selectedMovie} /> */}
         </div>
       )}
     </>
