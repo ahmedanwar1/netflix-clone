@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/Card.module.css";
 import { motion } from "framer-motion";
 
@@ -10,6 +10,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Image from "next/image";
 
 import Modal from "./Modal";
+import axios from "axios";
 
 interface Props {
   longCard?: Boolean;
@@ -29,6 +30,24 @@ const Card: React.FC<Props> = ({
   voteAverage,
 }) => {
   const [toggleModal, setToggleModal] = useState<Boolean>(false);
+  const [genreData, setGenreData] = useState<any>();
+
+  useEffect(() => {
+    axios.get(`/api/movies/genres`).then((result) => {
+      setGenreData(result.data.genres);
+      // console.log(genres);
+    });
+  }, []);
+
+  const getGenreName = (id: Number): String => {
+    let genreName = "";
+    genreData.forEach((element: any) => {
+      if (element.id === id) {
+        genreName = element.name;
+      }
+    });
+    return genreName;
+  };
 
   return (
     <>
@@ -79,9 +98,10 @@ const Card: React.FC<Props> = ({
           <p className={styles.rating}>Rating: {voteAverage} of 10</p>
           <div className={styles.genre}>
             <ul>
-              {genres?.map((genere: any) => (
-                <li key={genere}>{genere}</li>
-              ))}
+              {genreData &&
+                genres?.map((genre: any) => (
+                  <li key={genre}>{getGenreName(genre)}</li>
+                ))}
             </ul>
           </div>
         </div>

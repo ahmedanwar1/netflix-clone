@@ -5,7 +5,6 @@ import Card from "./Card";
 import ScrollContainer from "react-indiana-drag-scroll";
 
 interface Props {
-  // title: String;
   genre: any;
 }
 
@@ -14,15 +13,10 @@ const CategoryList: React.FC<Props> = ({ genre }) => {
 
   useEffect(() => {
     if (genre) {
-      axios
-        .get(
-          // `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}&with_genres=${genere.id}`
-          `/api/movies/discover?genre_id=${genre.id}`
-        )
-        .then((result) => {
-          // setMoviesList(result.data.results);
-          setMoviesList(result.data);
-        });
+      axios.get(`/api/movies/discover?genre_id=${genre.id}`).then((result) => {
+        // setMoviesList(result.data.results);
+        setMoviesList(result.data);
+      });
     }
   }, []);
 
