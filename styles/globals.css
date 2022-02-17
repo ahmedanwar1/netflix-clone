@@ -53,6 +53,12 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+
+.actionBtn:hover {
+  border: 2px solid #ccc;
 }
 
 .actionBtn svg {
