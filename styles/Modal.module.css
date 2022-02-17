@@ -93,6 +93,8 @@
 
 .genre {
   display: flex;
+  align-items: center;
+  align-content: flex-start;
 }
 .genre {
   flex-wrap: wrap;

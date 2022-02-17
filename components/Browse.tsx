@@ -1,21 +1,20 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "../styles/Browse.module.css";
 import CategoryList from "./CategoryList";
+import { addGenres } from "../store/genresSlice";
+import { RootState } from "../store";
 
 const Browse: React.FC = () => {
   const [genresList, setGenresList] = useState<any>();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    axios
-      .get(
-        // `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.TMDB_API_KEY}&language=en-US`
-        `/api/movies/genres`
-      )
-      .then((result) => {
-        setGenresList(result.data.genres);
-        // console.log(result);
-      });
+    axios.get(`/api/movies/genres`).then((result) => {
+      setGenresList(result.data.genres);
+      dispatch(addGenres(result.data.genres));
+    });
   }, []);
 
   return (

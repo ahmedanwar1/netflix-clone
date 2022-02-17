@@ -11,6 +11,8 @@ import Image from "next/image";
 
 import Modal from "./Modal";
 import axios from "axios";
+import { RootState } from "../store";
+import { useSelector } from "react-redux";
 
 interface Props {
   longCard?: Boolean;
@@ -30,18 +32,11 @@ const Card: React.FC<Props> = ({
   voteAverage,
 }) => {
   const [toggleModal, setToggleModal] = useState<Boolean>(false);
-  const [genreData, setGenreData] = useState<any>();
-
-  useEffect(() => {
-    axios.get(`/api/movies/genres`).then((result) => {
-      setGenreData(result.data.genres);
-      // console.log(genres);
-    });
-  }, []);
+  const genreList = useSelector((state: RootState) => state.genres.genresList);
 
   const getGenreName = (id: Number): String => {
     let genreName = "";
-    genreData.forEach((element: any) => {
+    genreList.forEach((element: any) => {
       if (element.id === id) {
         genreName = element.name;
       }
@@ -56,7 +51,7 @@ const Card: React.FC<Props> = ({
           <div className={styles.thumbnail}>
             <Image
               src={"https://image.tmdb.org/t/p/w500/" + imgSrc}
-              onClick={() => setToggleModal(true)}
+              // onClick={() => setToggleModal(true)}
               layout="fill"
             />
           </div>
@@ -64,7 +59,7 @@ const Card: React.FC<Props> = ({
         {longCard && (
           <Image
             src={"https://image.tmdb.org/t/p/original" + imgSrc}
-            onClick={() => setToggleModal(true)}
+            // onClick={() => setToggleModal(true)}
             layout="fill"
           />
         )}
@@ -89,8 +84,8 @@ const Card: React.FC<Props> = ({
               )}
             </div>
             <div className={styles.right}>
-              <div className="actionBtn">
-                <KeyboardArrowDownIcon onClick={() => setToggleModal(true)} />
+              <div className="actionBtn" onClick={() => setToggleModal(true)}>
+                <KeyboardArrowDownIcon />
               </div>
             </div>
           </div>
@@ -98,7 +93,7 @@ const Card: React.FC<Props> = ({
           <p className={styles.rating}>Rating: {voteAverage} of 10</p>
           <div className={styles.genre}>
             <ul>
-              {genreData &&
+              {genreList &&
                 genres?.map((genre: any) => (
                   <li key={genre}>{getGenreName(genre)}</li>
                 ))}

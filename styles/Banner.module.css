@@ -84,6 +84,7 @@
   }
   .banner .details .title {
     font-size: 25px;
+    text-align: center;
   }
   .banner img {
     height: 500px;
