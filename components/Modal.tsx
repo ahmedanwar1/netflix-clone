@@ -8,22 +8,35 @@ import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 import { Button } from "@mui/material";
 import axios from "axios";
+import { addMovieID, setVisibilityToFalse } from "../store/modalSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../store";
 
-interface Props {
-  // toggleModalHandler: (state: Boolean) => void;
-  toggleModalHandler: any;
-  movieID: Number;
-}
+// interface Props {
+//   // toggleModalHandler: (state: Boolean) => void;
+//   toggleModalHandler: any;
+//   movieID: Number;
+// }
 
-const Modal: React.FC<Props> = ({ toggleModalHandler, movieID }) => {
+const Modal: React.FC = () => {
   const [movieData, setMovieData] = useState<any>();
 
+  const dispatch = useDispatch();
+
+  const movieID = useSelector((state: RootState) => state.modal.movieID);
+
+  // dispatch(addMovieID());
+
   useEffect(() => {
-    axios.get(`/api/movies/get_movie?movie_id=${movieID}`).then((result) => {
-      setMovieData(result.data);
-      // console.log(result.data);
-    });
-  }, []);
+    if (movieID) {
+      axios.get(`/api/movies/get_movie?movie_id=${movieID}`).then((result) => {
+        setMovieData(result.data);
+        // console.log(result.data);
+      });
+    } else {
+      setMovieData(null);
+    }
+  }, [movieID]);
 
   return (
     <>
@@ -37,7 +50,7 @@ const Modal: React.FC<Props> = ({ toggleModalHandler, movieID }) => {
               />
               <Button
                 className={styles.closeBtn}
-                onClick={() => toggleModalHandler(false)}
+                onClick={() => dispatch(setVisibilityToFalse())}
               >
                 <CloseIcon />
               </Button>
@@ -77,7 +90,7 @@ const Modal: React.FC<Props> = ({ toggleModalHandler, movieID }) => {
 
           <div
             className={styles.modalOverlay}
-            onClick={() => toggleModalHandler(false)}
+            onClick={() => dispatch(setVisibilityToFalse())}
           ></div>
         </div>
       )}

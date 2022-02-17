@@ -4,6 +4,8 @@ import styles from "../styles/Banner.module.css";
 
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import { useDispatch } from "react-redux";
+import { addMovieID } from "../store/modalSlice";
 
 // type results = [
 //   {
@@ -16,6 +18,8 @@ interface Props {
 }
 
 const Banner: React.FC<Props> = ({ trendingMovies }) => {
+  const dispatch = useDispatch();
+
   const [spotLightMovie, setSpotLightMovie] = useState<any>();
 
   const SpotLightMovieSetter = () => {
@@ -47,7 +51,10 @@ const Banner: React.FC<Props> = ({ trendingMovies }) => {
               <Button variant="contained">
                 <PlayArrowIcon /> Play
               </Button>
-              <Button variant="contained">
+              <Button
+                variant="contained"
+                onClick={() => dispatch(addMovieID(spotLightMovie.id))}
+              >
                 <InfoOutlinedIcon /> More info
               </Button>
             </div>

@@ -12,7 +12,8 @@ import Image from "next/image";
 import Modal from "./Modal";
 import axios from "axios";
 import { RootState } from "../store";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addMovieID } from "../store/modalSlice";
 
 interface Props {
   longCard?: Boolean;
@@ -31,7 +32,8 @@ const Card: React.FC<Props> = ({
   genres,
   voteAverage,
 }) => {
-  const [toggleModal, setToggleModal] = useState<Boolean>(false);
+  const dispatch = useDispatch();
+  // const [toggleModal, setToggleModal] = useState<Boolean>(false);
   const genreList = useSelector((state: RootState) => state.genres.genresList);
 
   const getGenreName = (id: Number): String => {
@@ -84,7 +86,10 @@ const Card: React.FC<Props> = ({
               )}
             </div>
             <div className={styles.right}>
-              <div className="actionBtn" onClick={() => setToggleModal(true)}>
+              <div
+                className="actionBtn"
+                onClick={() => dispatch(addMovieID(id))}
+              >
                 <KeyboardArrowDownIcon />
               </div>
             </div>
@@ -101,9 +106,9 @@ const Card: React.FC<Props> = ({
           </div>
         </div>
       </div>
-      {toggleModal && (
+      {/* {toggleModal && (
         <Modal toggleModalHandler={setToggleModal} movieID={id} />
-      )}
+      )} */}
     </>
   );
 };

@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import genresReducer from "./genresSlice";
+import modalReducer from "./modalSlice";
 
 export const store = configureStore({
   reducer: {
     genres: genresReducer,
+    modal: modalReducer,
   },
 });
 
