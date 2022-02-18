@@ -47,8 +47,8 @@ const Header: React.FC = () => {
           <img src="https://scontent.fcai21-3.fna.fbcdn.net/v/t39.30808-1/s320x320/273281161_3153911598161695_3361964561094897906_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=7206a8&_nc_ohc=ac_GwtuptygAX83_EBU&_nc_ht=scontent.fcai21-3.fna&oh=00_AT8ocPCniOr5YgsKnXSeyQu-K9tyPAkwHLfeF_ouZA3Y-w&oe=6206E509" />
         </div> */}
           <Avatar
-            alt="Remy Sharp"
-            src="https://scontent.fcai21-3.fna.fbcdn.net/v/t39.30808-1/s320x320/273281161_3153911598161695_3361964561094897906_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=7206a8&_nc_ohc=c9IcPMJtXWgAX9GgQ7j&_nc_ht=scontent.fcai21-3.fna&oh=00_AT_Oh4h1aUntqLJAiuSIZRIMNsTjdj3QQC-ZlaUi0_L6mw&oe=620CD3C9"
+            alt="profile"
+            src="https://scontent.fcai21-3.fna.fbcdn.net/v/t39.30808-1/273281161_3153911598161695_3361964561094897906_n.jpg?stp=dst-jpg_s320x320&_nc_cat=105&ccb=1-5&_nc_sid=7206a8&_nc_ohc=iqokyTnYPvkAX-v9e9A&_nc_ht=scontent.fcai21-3.fna&oh=00_AT9kUkC6AGYg5KjCSseBP1MRufXmjjb-MB3SOuJ4KXSMMA&oe=62144429"
           />
         </div>
       </header>
