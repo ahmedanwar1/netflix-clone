@@ -11,6 +11,7 @@ import axios from "axios";
 import { addMovieID, setVisibilityToFalse } from "../store/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
+import { AnimatePresence, motion } from "framer-motion";
 
 // interface Props {
 //   // toggleModalHandler: (state: Boolean) => void;
@@ -39,10 +40,16 @@ const Modal: React.FC = () => {
   }, [movieID]);
 
   return (
-    <>
+    <AnimatePresence>
       {movieData && (
         <div className={styles.modalContainer}>
-          <div className={styles.modal}>
+          <motion.div
+            key="modal"
+            initial={{ y: -1000 }}
+            animate={{ y: 1 }}
+            exit={{ y: 1000 }}
+            className={styles.modal}
+          >
             <div className={styles.spotLight}>
               <img
                 src={`https://image.tmdb.org/t/p/original/${movieData.backdrop_path}`}
@@ -86,7 +93,7 @@ const Modal: React.FC = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           <div
             className={styles.modalOverlay}
@@ -94,7 +101,7 @@ const Modal: React.FC = () => {
           ></div>
         </div>
       )}
-    </>
+    </AnimatePresence>
   );
 };
 

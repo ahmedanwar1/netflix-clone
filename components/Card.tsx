@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/Card.module.css";
-import { motion } from "framer-motion";
+import { domAnimation, LazyMotion, motion } from "framer-motion";
 
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import AddIcon from "@mui/icons-material/Add";
@@ -9,8 +9,6 @@ import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Image from "next/image";
 
-import Modal from "./Modal";
-import axios from "axios";
 import { RootState } from "../store";
 import { useDispatch, useSelector } from "react-redux";
 import { addMovieID } from "../store/modalSlice";
@@ -33,7 +31,7 @@ const Card: React.FC<Props> = ({
   voteAverage,
 }) => {
   const dispatch = useDispatch();
-  // const [toggleModal, setToggleModal] = useState<Boolean>(false);
+  const [imageLoaded, setImageLoaded] = useState<Boolean>(false);
   const genreList = useSelector((state: RootState) => state.genres.genresList);
 
   const getGenreName = (id: Number): String => {
@@ -50,13 +48,18 @@ const Card: React.FC<Props> = ({
     <>
       <div className={longCard ? styles.longCard : styles.card}>
         {!longCard && (
-          <div className={styles.thumbnail}>
+          <motion.div
+            // initial={{ opacity: 0.5, background: "#888" }}
+            // animate={{ opacity: 1, background: "none" }}
+            className={styles.thumbnail}
+          >
             <Image
               src={"https://image.tmdb.org/t/p/w500/" + imgSrc}
               // onClick={() => setToggleModal(true)}
               layout="fill"
+              onLoad={() => setImageLoaded(true)}
             />
-          </div>
+          </motion.div>
         )}
         {longCard && (
           <Image
