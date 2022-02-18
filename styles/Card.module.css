@@ -177,3 +177,90 @@
     scroll-snap-align: center;
   }
 }
+
+.card img,
+.longCard img {
+  animation: skeletonImage 0.3s ease-in-out 0s infinite alternate;
+}
+
+@keyframes skeletonImage {
+  0% {
+    background: linear-gradient(
+      270deg,
+      rgb(52 52 52 / 85%) 0%,
+      rgb(122 122 122) 100%
+    );
+  }
+
+  10% {
+    background: linear-gradient(
+      270deg,
+      rgb(52 52 52 / 85%) 10%,
+      rgb(122 122 122) 100%
+    );
+  }
+  20% {
+    background: linear-gradient(
+      270deg,
+      rgb(52 52 52 / 85%) 20%,
+      rgb(122 122 122) 100%
+    );
+  }
+  30% {
+    background: linear-gradient(
+      270deg,
+      rgb(52 52 52 / 85%) 30%,
+      rgb(122 122 122) 100%
+    );
+  }
+  40% {
+    background: linear-gradient(
+      270deg,
+      rgb(52 52 52 / 85%) 40%,
+      rgb(122 122 122) 100%
+    );
+  }
+  50% {
+    background: linear-gradient(
+      270deg,
+      rgb(52 52 52 / 85%) 50%,
+      rgb(122 122 122) 100%
+    );
+  }
+  60% {
+    background: linear-gradient(
+      270deg,
+      rgb(52 52 52 / 85%) 60%,
+      rgb(122 122 122) 100%
+    );
+  }
+  70% {
+    background: linear-gradient(
+      270deg,
+      rgb(52 52 52 / 85%) 70%,
+      rgb(122 122 122) 100%
+    );
+  }
+  80% {
+    background: linear-gradient(
+      270deg,
+      rgb(52 52 52 / 85%) 80%,
+      rgb(122 122 122) 100%
+    );
+  }
+  90% {
+    background: linear-gradient(
+      270deg,
+      rgb(52 52 52 / 85%) 90%,
+      rgb(122 122 122) 100%
+    );
+  }
+
+  100% {
+    background: linear-gradient(
+      270deg,
+      rgb(52 52 52 / 85%) 100%,
+      rgb(122 122 122) 100%
+    );
+  }
+}
