@@ -5,6 +5,7 @@ import styles from "../styles/Login.module.css";
 import { Button } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import { signIn } from "next-auth/react";
 
 const Login: NextPage = () => {
   return (
@@ -25,7 +26,12 @@ const Login: NextPage = () => {
               <MenuItem value={"en"}>ENGLISH</MenuItem>
               <MenuItem value={"ar"}>ARABIC</MenuItem>
             </Select>
-            <Button variant="contained">Sign in</Button>
+            <Button
+              variant="contained"
+              onClick={() => signIn("google", { callbackUrl: "/" })}
+            >
+              Sign in
+            </Button>
           </div>
         </div>
 
