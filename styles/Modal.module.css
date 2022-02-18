@@ -121,16 +121,16 @@
   min-height: 33px !important;
   max-width: 33px !important;
   max-height: 33px !important;
-  position: absolute;
+  position: absolute !important;
   top: 15px;
   right: 15px;
-  background-color: var(--primary-color);
-  color: #fff;
-  border-radius: 50%;
+  background-color: var(--primary-color) !important;
+  color: #fff !important;
+  border-radius: 50% !important;
 }
 
 .closeBtn:hover {
-  background-color: var(--primary-color);
+  background-color: var(--primary-color) !important;
 }
 
 .closeBtn svg {
