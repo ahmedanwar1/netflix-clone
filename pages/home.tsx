@@ -7,8 +7,8 @@ import Browse from "../components/Browse";
 import axios from "axios";
 import Footer from "../components/Footer";
 import Modal from "../components/Modal";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store";
+// import { useDispatch, useSelector } from "react-redux";
+// import { RootState } from "../store";
 
 interface Props {
   trendingMovies: any;
@@ -16,9 +16,9 @@ interface Props {
 
 const home: NextPage<Props> = ({ trendingMovies }) => {
   // const dispatch = useDispatch();
-  const modalVisibility = useSelector(
-    (state: RootState) => state.modal.visible
-  );
+  // const modalVisibility = useSelector(
+  //   (state: RootState) => state.modal.visible
+  // );
 
   return (
     <>
