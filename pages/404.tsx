@@ -1,14 +1,21 @@
+import { Button } from "@mui/material";
+import Head from "next/head";
+import Link from "next/link";
 import React from "react";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-
+import styles from "../styles/404.module.css";
 const _404 = () => {
   return (
-    <>
-      <Header />
-      <div style={{ margin: "50px" }}>404 This page could not be found.</div>
-      <Footer />
-    </>
+    <div className={styles.container}>
+      <Head>
+        <title>Not found</title>
+        <meta name="description" content="netflix clone website" />
+        <link rel="icon" href="/netflix_PNG8.png" />
+      </Head>
+      <img src="/404_error.gif" />
+      <Link href="/">
+        <Button>Back to home page</Button>
+      </Link>
+    </div>
   );
 };
 

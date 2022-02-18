@@ -19,7 +19,7 @@ const Index: NextPage<Props> = ({ trendingMovies }) => {
       <Head>
         <title>Netflix</title>
         <meta name="description" content="netflix clone website" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/netflix_PNG8.png" />
       </Head>
       <Modal />
       <Header />

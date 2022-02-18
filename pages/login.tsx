@@ -6,10 +6,16 @@ import { Button } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { signIn } from "next-auth/react";
+import Head from "next/head";
 
 const Login: NextPage = () => {
   return (
     <div className={styles.backgroundCover + " container"}>
+      <Head>
+        <title>Login</title>
+        <meta name="description" content="netflix clone website" />
+        <link rel="icon" href="/netflix_PNG8.png" />
+      </Head>
       <div className={styles.wrapper}>
         <div className={styles.header}>
           <img

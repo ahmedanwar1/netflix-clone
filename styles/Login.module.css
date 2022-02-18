@@ -32,7 +32,7 @@
 }
 
 .wrapper button {
-  background-color: #e50914 !important;
+  background-color: var(--secondary-color) !important;
 }
 
 .header {
