@@ -1,1 +1,1 @@
-https://netflix-ahmedanwar1.vercel.app/home
+https://netflix-bwoeamg06-ahmedanwar1.vercel.app
