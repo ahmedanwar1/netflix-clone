@@ -56,17 +56,18 @@ const Card: React.FC<Props> = ({
           >
             <Image
               src={"https://image.tmdb.org/t/p/w500/" + imgSrc}
-              // onClick={() => setToggleModal(true)}
+              className={imageLoaded ? "" : styles.skeletonImageAnimate}
               layout="fill"
-              onLoad={() => setImageLoaded(true)}
+              onLoadingComplete={() => setImageLoaded(true)}
             />
           </motion.div>
         )}
         {longCard && (
           <Image
             src={"https://image.tmdb.org/t/p/original" + imgSrc}
-            // onClick={() => setToggleModal(true)}
+            className={imageLoaded ? "" : styles.skeletonImageAnimate}
             layout="fill"
+            onLoadingComplete={() => setImageLoaded(true)}
           />
         )}
         <div className={styles.details}>
@@ -110,9 +111,6 @@ const Card: React.FC<Props> = ({
           </div>
         </div>
       </div>
-      {/* {toggleModal && (
-        <Modal toggleModalHandler={setToggleModal} movieID={id} />
-      )} */}
     </>
   );
 };
