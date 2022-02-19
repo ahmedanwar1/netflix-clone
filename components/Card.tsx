@@ -12,6 +12,7 @@ import Image from "next/image";
 import { RootState } from "../store";
 import { useDispatch, useSelector } from "react-redux";
 import { addMovieID } from "../store/modalSlice";
+import { IGenre } from "../types";
 
 interface Props {
   longCard?: Boolean;
@@ -35,10 +36,10 @@ const Card: React.FC<Props> = ({
   const genreList = useSelector((state: RootState) => state.genres.genresList);
 
   const getGenreName = (id: Number): String => {
-    let genreName = "";
-    genreList.forEach((element: any) => {
-      if (element.id === id) {
-        genreName = element.name;
+    let genreName: String = "";
+    genreList.forEach((genre: IGenre) => {
+      if (genre.id === id) {
+        genreName = genre.name;
       }
     });
     return genreName;
@@ -102,8 +103,8 @@ const Card: React.FC<Props> = ({
           <div className={styles.genre}>
             <ul>
               {genreList &&
-                genres?.map((genre: any) => (
-                  <li key={genre}>{getGenreName(genre)}</li>
+                genres?.map((genre: Number) => (
+                  <li key={genre.toString()}>{getGenreName(genre)}</li>
                 ))}
             </ul>
           </div>

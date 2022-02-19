@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "../styles/Browse.module.css";
 import CategoryList from "./CategoryList";
 import { addGenres } from "../store/genresSlice";
-import { RootState } from "../store";
+import { IGenre, TGenresList } from "../types";
 
 const Browse: React.FC = () => {
-  const [genresList, setGenresList] = useState<any>();
+  const [genresList, setGenresList] = useState<TGenresList>();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,8 +20,8 @@ const Browse: React.FC = () => {
   return (
     <div className={styles.browse}>
       {genresList &&
-        genresList.map((genre: any) => {
-          return <CategoryList genre={genre} key={genre.id} />;
+        genresList.map((genre: IGenre) => {
+          return <CategoryList genre={genre} key={genre.id.toString()} />;
         })}
     </div>
   );

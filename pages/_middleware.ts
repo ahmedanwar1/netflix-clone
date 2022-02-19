@@ -2,8 +2,12 @@ import type { NextFetchEvent, NextRequest } from "next/server";
 
 import { getToken } from "next-auth/jwt";
 import { NextResponse } from "next/server";
+import { NextApiRequest } from "next";
 
-export async function middleware(req: any, ev: NextFetchEvent) {
+export async function middleware(
+  req: NextRequest & NextApiRequest,
+  ev: NextFetchEvent
+) {
   if (req.nextUrl.pathname == "/") {
     const token = await getToken({
       req: req,

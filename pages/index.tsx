@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
+import axios from "axios";
+import absoluteUrl from "next-absolute-url";
 
 import type { NextPage } from "next";
+import { GetServerSideProps } from "next";
+import { TMovieList } from "../types";
+
 import Header from "../components/Header";
 import Banner from "../components/Banner";
 import Browse from "../components/Browse";
-import axios from "axios";
 import Footer from "../components/Footer";
 import Modal from "../components/Modal";
 import Head from "next/head";
 
 interface Props {
-  trendingMovies: any;
+  trendingMovies: TMovieList;
 }
 
 const Index: NextPage<Props> = ({ trendingMovies }) => {
@@ -32,11 +36,9 @@ const Index: NextPage<Props> = ({ trendingMovies }) => {
 
 export default Index;
 
-export const getServerSideProps = async () => {
-  const trendingMovies = await axios.get(
-    // `https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.TMDB_API_KEY}`
-    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}&with_genres=16`
-  );
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { origin } = absoluteUrl(context.req);
+  const trendingMovies = await axios.get(`${origin}/api/movies/trending`);
 
   return {
     props: {

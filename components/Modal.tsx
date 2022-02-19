@@ -12,15 +12,10 @@ import { addMovieID, setVisibilityToFalse } from "../store/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
 import { AnimatePresence, motion } from "framer-motion";
-
-// interface Props {
-//   // toggleModalHandler: (state: Boolean) => void;
-//   toggleModalHandler: any;
-//   movieID: Number;
-// }
+import { IFullMovieData, IGenre } from "../types";
 
 const Modal: React.FC = () => {
-  const [movieData, setMovieData] = useState<any>();
+  const [movieData, setMovieData] = useState<IFullMovieData | null>();
 
   const dispatch = useDispatch();
 
@@ -87,8 +82,8 @@ const Modal: React.FC = () => {
                 <p className={styles.text}>{movieData.overview}</p>
                 <div className={styles.genre}>
                   <h4>Genres: </h4>
-                  {movieData.genres?.map((genere: any) => (
-                    <span key={genere.id}>{genere.name}</span>
+                  {movieData.genres?.map((genre: IGenre) => (
+                    <span key={genre.id.toString()}>{genre.name}</span>
                   ))}
                 </div>
               </div>

@@ -13,10 +13,6 @@ const Header: React.FC = () => {
   const { data: session } = useSession();
 
   useEffect(() => {
-    console.log(session);
-  }, [session]);
-
-  useEffect(() => {
     if (window !== undefined) {
       document.addEventListener("scroll", () => {
         setDarkBackground(window.scrollY > 100);

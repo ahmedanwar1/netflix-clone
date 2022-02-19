@@ -6,25 +6,20 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { useDispatch } from "react-redux";
 import { addMovieID } from "../store/modalSlice";
-
-// type results = [
-//   {
-//     poster_path: String;
-//   }
-// ];
+import { IMovie, TMovieList } from "../types";
 
 interface Props {
-  trendingMovies: any;
+  trendingMovies: TMovieList;
 }
 
 const Banner: React.FC<Props> = ({ trendingMovies }) => {
   const dispatch = useDispatch();
 
-  const [spotLightMovie, setSpotLightMovie] = useState<any>();
+  const [spotLightMovie, setSpotLightMovie] = useState<IMovie>();
 
   const SpotLightMovieSetter = () => {
-    const ranNum = Math.floor(Math.random() * trendingMovies.results.length);
-    setSpotLightMovie(trendingMovies.results[ranNum]);
+    const ranNum = Math.floor(Math.random() * trendingMovies.length);
+    setSpotLightMovie(trendingMovies[ranNum]);
   };
 
   useEffect(() => {

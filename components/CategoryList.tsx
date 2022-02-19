@@ -3,13 +3,14 @@ import React, { useEffect, useState } from "react";
 import styles from "../styles/CategoryList.module.css";
 import Card from "./Card";
 import ScrollContainer from "react-indiana-drag-scroll";
+import { IGenre, IMovie, TMovieList } from "../types";
 
 interface Props {
-  genre: any;
+  genre: IGenre;
 }
 
 const CategoryList: React.FC<Props> = ({ genre }) => {
-  const [moviesList, setMoviesList] = useState<any>();
+  const [moviesList, setMoviesList] = useState<TMovieList>();
 
   useEffect(() => {
     if (genre) {
@@ -26,9 +27,9 @@ const CategoryList: React.FC<Props> = ({ genre }) => {
         <div className={styles.categoryList}>
           <h2 className={styles.title}>{genre.name}</h2>
           <ScrollContainer className={styles.cardContainer}>
-            {moviesList.map((movie: any) => (
+            {moviesList.map((movie: IMovie) => (
               <Card
-                key={movie.id}
+                key={movie.id.toString()}
                 id={movie.id}
                 longCard={genre.id === 10770 || genre.id === 99}
                 title={movie.title}
