@@ -1,1 +1,1 @@
-https://netflix-bwoeamg06-ahmedanwar1.vercel.app
+https://loving-edison-2aa87e.netlify.app
