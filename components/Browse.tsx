@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import styles from "../styles/Browse.module.css";
 import CategoryList from "./CategoryList";
 import { addGenres } from "../store/genresSlice";
