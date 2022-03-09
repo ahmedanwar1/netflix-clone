@@ -1,4 +1,4 @@
-#Netflix clone
+# Netflix clone
 
 Neflix clone using Next.JS with google auth, Redux & TMDB API 
 
